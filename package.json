@@ -1,0 +1,23 @@
+{
+  "name": "confusb",
+  "version": "1.0.0",
+  "description": "A desktop app that will image files to usb",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anth1y/confusb"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^0.4.1",
+    "electron-usb": "0.0.11",
+    "usb": "^1.1.1"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.1.3"
+  }
+}
