@@ -9,6 +9,33 @@
         We are using node <script>document.write(process.versions.node)</script>,
         Chrome <script>document.write(process.versions.chrome)</script>,
         and Electron <script>document.write(process.versions.electron)</script>.
+       <input type="file" name="image" accept=".dmg,.iso">,
+       <script type="text/javascript">
+        function getUSBDrives () {
+            return [
+                '/dev/wtf',
+                '/dev/wtg',
+                '/dev/wth'
+            ]
+        }
+
+        getUSBDrives().forEach(function (drive) {
+                var checkbox = document.createElement('input')
+                checkbox.type = 'checkbox'
+                checkbox.name = 'drives'
+                checkbox.value = drive
+                checkbox.id = "drives"
+
+                var label = document.createElement('label')
+                label.appendChild(document.createTextNode(drive))
+
+                document.body.appendChild(checkbox)
+                document.body.appendChild(label)
+        })
+        var fs = require('fs')
+        var results = fs.readdirSync('./node_modules')
+        document.write(JSON.stringify(results))
+       </script>
     </body>
 </html>
 

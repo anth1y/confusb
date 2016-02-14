@@ -14,7 +14,7 @@ app.on('window-all-closed', function() {
   }
 });
 
-//usb.getDeviceList();
+usb.getDeviceList();
 
 app.on('ready', function()  {
   mainWindow = new BrowserWindow({width: 800, height: 600});
