@@ -5,75 +5,60 @@
         <title>ConfUSB!</title>
 
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="../css/photon.min.css">
+        <link rel="stylesheet" href="css/photon.min.css">
 
         <!-- Javascript -->
         <script src="js/menu.js" charset="utf-8"></script>
+        <script src="js/script.js"></script>
     </head>
     <body>
         <div class="window">
-
             <!-- .toolbar-header sits at top of the app-->
             <header class="toolbar toolbar-header">
-            <h1 class="title">ConfUSB!</h1>
+                <h1 class="title">ConfUSB!</h1>
             </header>
 
-      <div class="window-content">
-        <div class="pane-group">
-          <div class="pane pane-sm sidebar">
-            <nav class="nav-group">
-              <h5 class="nav-group-title"></h5>
-              <span class="nav-group-item">
-                <span class="icon icon-home"></span>
-                imaging
-                </span>
-            </nav>
-          </div>
-          <div class="pane">
-            <table class="table-striped">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>ImageFile</th>
-                  <th>Mount Points</th>
-                  <th>Size</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-       <input type="file" name="image" accept=".dmg,.iso">,
-       <script type="text/javascript">
-        function getUSBDrives () {
-            return [
-                '/dev/wtf',
-                '/dev/wtg',
-                '/dev/wth'
-            ]
-        }
-
-        getUSBDrives().forEach(function (drive) {
-                var checkbox = document.createElement('input')
-                checkbox.type = 'checkbox'
-                checkbox.name = 'drives'
-                checkbox.value = drive
-                checkbox.id = "drives"
-
-                var label = document.createElement('label')
-                label.appendChild(document.createTextNode(drive))
-
-                document.body.appendChild(checkbox)
-                document.body.appendChild(label)
-        })
-              var fs = require('fs')
-              var results = fs.readdirSync('./node_modules')
-              document.write(JSON.stringify(results))
-             </script>
-             </tr>
-            </tbody>
-            </table>
-           </div>
-         </div>
-       </div>
+            <div class="window-content">
+                <div class="pane-group">
+                    <div class="pane pane-sm sidebar">
+                        <nav class="nav-group">
+                            <h5 class="nav-group-title"></h5>
+                            <span class="nav-group-item">
+                                <span class="icon icon-home"></span>
+                            imaging
+                            </span>
+                        </nav>
+                    </div>
+                    <div class="pane">
+                      <form id="foo">
+                         <div class="form-group">
+                            <label>Select Image</label>
+                              <input type="file" name="image" accept=".dmg,.iso">
+                          </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox"> This is a checkbox
+                              </label>
+                           </div>
+                      </form>
+                        <table class="table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>ImageFile</th>
+                                    <th>Mount Points</th>
+                                    <th>Size</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
 

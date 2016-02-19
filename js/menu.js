@@ -4,6 +4,7 @@ var MenuItem = remote.require('menu-item')
 
 // Build our new menu
 var menu = new Menu()
+
 menu.append(new MenuItem({
   label: 'Delete',
   click: function() {
@@ -11,6 +12,7 @@ menu.append(new MenuItem({
     alert('Deleted')
   }
 }))
+
 menu.append(new MenuItem({
   label: 'More Info...',
   click: function() {
