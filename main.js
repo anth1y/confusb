@@ -14,10 +14,14 @@ app.on('window-all-closed', function() {
   }
 });
 
-usb.getDeviceList();
 
 app.on('ready', function()  {
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({width:600, height: 300,
+   'min-width':500,
+   'min-height': 200,
+    'accept-first-mouse': true,
+    'title-bar-style':'hidden'
+  });
   
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
