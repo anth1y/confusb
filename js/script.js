@@ -1,11 +1,13 @@
-function getUSBDrives () {
-    return [
-        '/dev/wtf',
-        '/dev/wtg',
-        '/dev/wth'
-    ]
-}
-
+//TODO https://www.npmjs.com/package/nodejs-disks
+var $ = require('jquery')
+var usb = require('electron-usb')
+usb.on("attach", function(device){
+    var form = $("#foo")
+    form.append(renderDeviceCheckbox(device))
+})
+usb.on("detach", function(device) {
+  $('device'+device.deviceAddress).remove()
+})
 /**
  *
  * <div class="checkbox">
@@ -14,31 +16,31 @@ function getUSBDrives () {
  *   </label>
  * </div>
  */
-function renderDriveCheckbox (drive) {
-
+function renderDeviceCheckbox (device) {
 
     var checkbox = document.createElement('div')
+    checkbox.id ='device'+ device.deviceAddress
     checkbox.class = 'checkbox'
 
         var input = document.createElement('input')
         input.type = 'checkbox'
-        input.name = 'drives'
-        input.value = drive
-        input.id = "drives"
+        input.name = 'devices'
+        input.value = device.deviceAddress
+        input.id = "devices"
 
         var label = document.createElement('label')
         label.appendChild(input)
         checkbox.appendChild(label)
-        label.appendChild(document.createTextNode(drive))
+        label.appendChild(document.createTextNode(device.deviceAddress))
         return checkbox
 }
+
 document.addEventListener('DOMContentLoaded', function () {
     var form = document.querySelector('#foo')
-    alert('yep')
-    getUSBDrives().forEach(function (drive) {
-        form.appendChild(renderDriveCheckbox(drive))
+    usb.getDeviceList().forEach(function (device) {
+        console.log(device)
+        form.appendChild(renderDeviceCheckbox(device))
     })
 
 })
-
 
