@@ -1,46 +1,27 @@
-//TODO https://www.npmjs.com/package/nodejs-disks
 var $ = require('jquery')
-var usb = require('electron-usb')
-usb.on("attach", function(device){
-    var form = $("#foo")
-    form.append(renderDeviceCheckbox(device))
-})
-usb.on("detach", function(device) {
-  $('device'+device.deviceAddress).remove()
-})
-/**
- *
- * <div class="checkbox">
- *   <label>
- *     <input type="checkbox"> DRIVE
- *   </label>
- * </div>
- */
-function renderDeviceCheckbox (device) {
+var usb = require('usb-detection')
+var hbars = require('handlebars');
 
-    var checkbox = document.createElement('div')
-    checkbox.id ='device'+ device.deviceAddress
-    checkbox.class = 'checkbox'
 
-        var input = document.createElement('input')
-        input.type = 'checkbox'
-        input.name = 'devices'
-        input.value = device.deviceAddress
-        input.id = "devices"
+function renderCheckboxes () {
+    var form = $('#form')
+    var source = $("#template").html()
+    var template = hbars.compile(source)
+    usb.find(function(err, devices) {  
+      if (err) {
+        return console.log(err)
+      }
 
-        var label = document.createElement('label')
-        label.appendChild(input)
-        checkbox.appendChild(label)
-        label.appendChild(document.createTextNode(device.deviceAddress))
-        return checkbox
+      var html = template({ 
+          devices: devices.filter(function(device){
+             return device.manufacturer.indexOf('Apple') === -1
+          })
+      })
+      form.append(html)
+    })
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    var form = document.querySelector('#foo')
-    usb.getDeviceList().forEach(function (device) {
-        console.log(device)
-        form.appendChild(renderDeviceCheckbox(device))
-    })
-
+$(function () {
+    renderCheckboxes()
 })
 

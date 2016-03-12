@@ -8,10 +8,21 @@
         <link rel="stylesheet" href="css/photon.min.css">
 
         <!-- Javascript -->
+        <script src="node_modules/handlebars/dist/handlebars.runtime.js"> </script>
         <script src="js/menu.js" charset="utf-8"></script>
         <script src="js/script.js"></script>
     </head>
     <body>
+        <script id="template" type="text/x-handlebars-template">
+            {{#each devices}}
+              <div class="checkbox">
+                <label>
+                    <input type="checkbox"> {{deviceName}} – {{manufacturer}}
+                </label>
+              </div>
+            {{/each}}
+        </script>
+
         <div class="window">
             <!-- .toolbar-header sits at top of the app-->
             <header class="toolbar toolbar-header">
@@ -30,16 +41,11 @@
                         </nav>
                     </div>
                     <div class="pane">
-                      <form id="foo">
+                      <form id="form">
                          <div class="form-group">
                             <label>Select Image</label>
                               <input type="file" name="image" accept=".dmg,.iso">
                           </div>
-                            <div class="checkbox">
-                              <label>
-                                <input type="checkbox"> This is a checkbox
-                              </label>
-                           </div>
                       </form>
                         <table class="table-striped">
                             <thead>
