@@ -2,7 +2,6 @@
 const $ = require('jquery')
 const usb = require('usb-detection')
 const hbars = require('handlebars')
-const remote = require('remote')
 const dialog = remote.require('dialog')
 
 
@@ -27,7 +26,12 @@ function renderCheckboxes () {
 $(function () {
     renderCheckboxes()
     $('#wtf').click(function(event){
-        dialog.showOpenDialog(function(filenames){
+        dialog.showOpenDialog({
+            filters: [
+         {name: 'Images', extensions: ['dmg']},
+            ]
+        },
+            function(filenames){
         console.log(filenames)
         })
     })
