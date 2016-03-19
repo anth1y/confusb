@@ -30,7 +30,7 @@ function pop() {
            ]
         },
             function(filenames){
-        console.log('foo', filenames)
+                console.log(filenames)
         })
 }
 
