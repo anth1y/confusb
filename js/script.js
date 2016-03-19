@@ -23,17 +23,18 @@ function renderCheckboxes () {
     })
 }
 
-$(function () {
-    renderCheckboxes()
-    $('#wtf').click(function(event){
-        dialog.showOpenDialog({
-            filters: [
+function pop() {
+       dialog.showOpenDialog({
+          filters: [
          {name: 'Images', extensions: ['dmg']},
-            ]
+           ]
         },
             function(filenames){
-        console.log(filenames)
+        console.log('foo', filenames)
         })
-    })
-})
+}
+
+$(function () {
+    renderCheckboxes()
+ })
 
