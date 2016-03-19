@@ -9,8 +9,8 @@
 
         <!-- Javascript -->
         <script src="node_modules/handlebars/dist/handlebars.runtime.js"> </script>
-        <script src="js/menu.js" charset="utf-8"></script>
-        <script src="js/script.js"></script>
+        <script src="./js/menu.js" charset="utf-8"></script>
+        <script src="./js/script.js"></script>
     </head>
     <body>
         <script id="template" type="text/x-handlebars-template">
@@ -42,10 +42,7 @@
                     </div>
                     <div class="pane">
                       <form id="form">
-                         <div class="form-group">
-                            <label>Select Image</label>
-                              <input type="file" name="image" accept=".dmg,.iso">
-                          </div>
+                          <button class="btn btn-large btn-primary" id="wtf" onclick="pop()">choose image </button>
                       </form>
                         <table class="table-striped">
                             <thead>
