@@ -3,7 +3,8 @@ const $ = require('jquery')
 const usb = require('usb-detection')
 const hbars = require('handlebars')
 const dialog = remote.require('dialog')
-const jsdskutil = require('./jsdskutil')
+const jdu = require('./jsdskutil')
+const jasr = require('./jsasr')
 
 function renderCheckboxes () {
     let form = $('#form')
@@ -32,7 +33,8 @@ function pop() {
             function(filenames){
                 console.log(filenames)
         }),
-       jsdskutil.partitionDisk()
+       jdu.partitionDisk()
+       jasr.imagescan()
 }
 
 $(function () {
