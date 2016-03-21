@@ -1,8 +1,7 @@
 <html>
-
     <head>
         <meta charset="UTF-8">
-        <title>ConfUSB!</title>
+        <title>ConfUSB</title>
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="css/photon.min.css">
@@ -26,7 +25,7 @@
         <div class="window">
             <!-- .toolbar-header sits at top of the app-->
             <header class="toolbar toolbar-header">
-                <h1 class="title">ConfUSB!</h1>
+                <h1 class="title">ConfUSB</h1>
             </header>
 
             <div class="window-content">
@@ -41,9 +40,16 @@
                         </nav>
                     </div>
                     <div class="pane">
-                      <div id="form">
-                          <button class="btn btn-large btn-primary" id="wtf" onclick="pop()">choose image </button>
+                       <div class="form-group">
+                          <label>CONFNAME</label>
+                          <input type="conference" class="form-control" placeholder="LISA16">
+                          <button class="btn btn-mini btn-positive">submit</button>
                       </div>
+                      <div id="form">
+                        <button class="btn btn-large btn-primary" id="wtf" onclick="pop()">choose image </button>
+                        <button class="btn btn-large btn-primary" id="wtf" onclick="doit()">partition </button>
+                      </div>
+
                     </div>
                 </div>
             </div>

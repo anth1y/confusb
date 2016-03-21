@@ -33,8 +33,10 @@ function pop() {
             function(filenames){
                 console.log(filenames)
         }),
-       jdu.partitionDisk()
        jasr.imagescan()
+}
+function doit() {
+       jdu.partitionDisk()
 }
 
 $(function () {
