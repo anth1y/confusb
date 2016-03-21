@@ -36,7 +36,9 @@ function pop() {
        jasr.imagescan()
 }
 function doit() {
-       jdu.partitionDisk()
+       let conf = $('#conf')[0].value
+       jdu.partitionDisk(conf)
+       console.log(conf)
 }
 
 $(function () {

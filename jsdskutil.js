@@ -1,10 +1,9 @@
 'use strict'
 const spawn = require('child_process').spawn
 
-
 module.exports = {
-  partitionDisk: function(){
-    this.run(['partitionDisk', 'MBRFormat', 'FAT32', '100%'])
+  partitionDisk: function(conf){
+    this.run(['partitionDisk', 'MBRFormat', 'FAT32',conf, '100%'])
   },
   eraseDisk: function(){
     this.run(['eraseDisk'])
