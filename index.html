@@ -13,13 +13,15 @@
     </head>
     <body>
         <script id="template" type="text/x-handlebars-template">
-            {{#each devices}}
+            <form id="drvchkbox">
+            {{#each drives}}
               <div class="checkbox">
                 <label>
-                    <input type="checkbox"> {{deviceName}} – {{manufacturer}}
+                    <input name="device" value="{{device}}"  type="checkbox"> {{device}} – {{volume}}
                 </label>
-              </div>
+            </div>
             {{/each}}
+        </form>
         </script>
 
         <div class="window">

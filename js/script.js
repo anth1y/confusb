@@ -3,27 +3,33 @@ const $ = require('jquery')
 const usb = require('usb-detection')
 const hbars = require('handlebars')
 const dialog = remote.require('dialog')
-const jdu = require('./jsdskutil')
-const jasr = require('./jsasr')
+const partd = require('./lib/parted')
+const mount = require('./lib/jsmnt')
 
 function renderCheckboxes () {
     let form = $('#form')
     let source = $("#template").html()
     let template = hbars.compile(source)
-    usb.find(function(err, devices) {
+    mount.list(function(err, drives) {
       if (err) {
         return console.log(err)
       }
 
       let html = template({
-          devices: devices.filter(function(device){
-             return device.manufacturer.indexOf('Apple') === -1
-          })
+          drives : drives
       })
       form.append(html)
+        $('#drvchkbox').change(function(){
+            let sector = []
+           $( "input:checkbox:checked" ).each(function(){
+               sector.push($(this).val())
+           })
+           drvimgr.drives = sector
+           console.log(drvimgr)
+        })
     })
 }
-
+let drvimgr = { drives : [] }
 function pop() {
        dialog.showOpenDialog({
           filters: [
@@ -31,13 +37,15 @@ function pop() {
            ]
         },
             function(filenames){
-                console.log(filenames)
-        }),
-       jasr.imagescan()
+               console.log(filenames)
+               drvimgr.image = filenames[0]
+               console.log(drvimgr.image)
+        })
 }
+
 function doit() {
        let conf = $('#conf')[0].value
-       jdu.partitionDisk(conf)
+       partd.partitionDisk(conf)
        console.log(conf)
 }
 
