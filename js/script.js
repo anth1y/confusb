@@ -1,6 +1,5 @@
 "use strict"
 const $ = require('jquery')
-const usb = require('usb-detection')
 const hbars = require('handlebars')
 const dialog = remote.require('dialog')
 const partd = require('./lib/parted')
@@ -30,7 +29,7 @@ function renderCheckboxes () {
     })
 }
 let drvimgr = { drives : [] }
-function pop() {
+function chooseImage() {
        dialog.showOpenDialog({
           filters: [
          {name: 'Images', extensions: ['dmg']},
@@ -43,7 +42,7 @@ function pop() {
         })
 }
 
-function doit() {
+function partition() {
        let conf = $('#conf')[0].value
        partd.partitionDisk(conf)
        console.log(conf)
