@@ -4,6 +4,7 @@ const hbars = require('handlebars')
 const dialog = remote.require('dialog')
 const partd = require('./lib/parted')
 const mount = require('./lib/jsmnt')
+const imgwrt = require('./lib/imgwrt')
 
 function renderCheckboxes () {
     let form = $('#form')
@@ -48,6 +49,25 @@ function partition() {
        console.log(conf)
 }
 
+
+function asr() {
+    let img = drvimgr.image
+    let count = 0
+      //  for (let i = 0; i < drvimgr.drives.length; i++ ){
+             let dev = drvimgr.drives[0]
+             imgwrt.asr(img, dev, function(error, stdout, stderr){
+                 count++
+                  console.log('ASRERROR', error, stdout, stderr)
+                 if (error) {
+                   console.log('ASRERROR', error.stack)
+                   return
+                 }
+                 console.log('ASR', stdout, i, img, dev)
+             })
+   //  }
+  //   while (count !== drvimgr.drives.length) {}
+   //  alert('done')
+}
 $(function () {
     renderCheckboxes()
  })
