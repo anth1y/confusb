@@ -43,10 +43,14 @@ function chooseImage() {
         })
 }
 
+function conf() {
+    return $('#conf')[0].value
+}
+
 function partition() {
-       let conf = $('#conf')[0].value
-       partd.partitionDisk(conf)
-       console.log(conf)
+       let dsk = drvimgr.drives[0].slice(0,-2)
+       partd.partitionDisk(dsk,conf())    
+       console.log(dsk,conf())
 }
 
 
@@ -62,7 +66,7 @@ function asr() {
                    console.log('ASRERROR', error.stack)
                    return
                  }
-                 console.log('ASR', stdout, i, img, dev)
+                 console.log('ASR', stdout, img, dev)
              })
    //  }
   //   while (count !== drvimgr.drives.length) {}
