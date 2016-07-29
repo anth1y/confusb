@@ -60,19 +60,23 @@ function asr() {
     let success = function(result){
         alert('done!')
     }
-    let error = function (e){
-        console.log('something went wrong')
-    }
+    let debugCallback = function(error, stdout, stderr){
+                            console.log('ASRERROR', error, stdout, stderr)
+                            if (error) {
+                                console.log('ASRERROR', error.stack)
+                                return
+                            }
+                            console.log('ASR', stdout, img, dev)
+                        }
 
     let myPromise = new promise(function(resolve, reject){
         for (let dev of drvimgr.drives){
-            let temp = imgwrt.asr(img, dev, function(){})
-          //  console.log('ASR', img, dev )
+            imgwrt.asr(img, dev, debugCallback)
         }
         resolve()
     })
 
-    myPromise.then(success, error)
+    myPromise.then(success)
 }
 
 $(function () {
